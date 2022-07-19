@@ -7,14 +7,17 @@
     <title>Document</title>
     <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>  <!--this is the scipt that the socket server provides-->
   <script defer src="script.js"></script>
-    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div id="msg"></div>
-    <form id="send">
-        <input type="text" id="msg-input">
-        <button type="submit" id="send-btn" style="margin-left: 10px">Send</button>
+    <div id="room-container">
+    <% Object.keys(rooms).forEach(room=>{%>
+        <div><%= room %></div>
+        <a href="/<%= room%>">Join</a>
+    <% })%>    
+</div>
+    <form action="/room" method="POST">
+        <input name="room" type="text" required>
+        <button type="submit">New Room</button>
     </form>
-    
 </body>
 </html>
